@@ -5,6 +5,7 @@ require __DIR__ . "/vendor/autoload.php";
 // Non-blocking server implementation based on amphp/socket.
 
 use Amp\Loop;
+use Amp\Socket\Server;
 use Amp\Socket\Socket;
 use function Amp\asyncCall;
 
@@ -24,7 +25,7 @@ Loop::run(function () {
     };
 
     // listen() is a small wrapper around stream_socket_server() returning a Server object
-    $server = Amp\Socket\Server::listen($uri);
+    $server = Server::listen($uri);
 
     // Like in the previous example, we accept each client as soon as we can
     // Server::accept() returns a promise. The coroutine will be interrupted and continued once the promise resolves.
