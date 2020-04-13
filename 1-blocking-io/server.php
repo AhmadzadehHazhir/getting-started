@@ -14,6 +14,6 @@ if (!$serverSocket || $errno) {
 
 while ($client = stream_socket_accept($serverSocket, -1)) {
     while (($line = fgets($client)) !== false) {
-        fputs($client, $line);
+        fwrite($client, $line);
     }
 }
